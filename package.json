@@ -1,0 +1,21 @@
+{
+  "name": "rehab",
+  "version": "0.0.1",
+  "description": "Rehab",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --compilers coffee:coffee-script -R spec --require should test/*"
+  },
+  "repository": "",
+  "author": "David Lojudice Sobrinho",
+  "license": "BSD",
+  "dependencies": {
+    "wrench": "latest"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest",
+    "coffee-script": "latest",
+    "source-map-support": "latest"
+  }
+}
