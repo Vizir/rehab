@@ -1,0 +1,16 @@
+{exec, spawn} = require 'child_process'
+Rehab = require '../../src/rehab'
+
+build = ->
+  console.log "Building project from src/*.coffee to lib/app.js"
+  join_to_single_file = "--join lib/app.js"
+
+  rehab = new Rehab()
+  files = rehab.process './src'
+
+  console.log "FILES:", files
+  exec "coffee #{join_to_single_file} --compile --output lib/", (err, stdout, stderr) ->
+    throw err if err
+
+task 'build', 'Build coffee2js using Rehab', sbuild = ->
+  build()
