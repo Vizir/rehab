@@ -1,1 +1,1 @@
-class Repo1
+class app.Repo1

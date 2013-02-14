@@ -4,7 +4,7 @@ Rehab = require '../src/rehab'
 describe "rehab", ->
   describe "normalizeFilePath", ->
     describe "should return a graph", ->
-      it "desnormalized file path", ->
+      it "normalized file path", ->
         #given
         files = [["fileA", "fileB"], ["./fileB", "fileC"]]
 
@@ -13,9 +13,9 @@ describe "rehab", ->
         sorted = rehab.normalizeFilename '.', files
 
         #then
-        sorted.should.eql files = [["fileA.coffee", "fileB.coffee"], ["fileB.coffee", "fileC.coffee"]]
+        sorted.should.eql [["fileA.coffee", "fileB.coffee"], ["fileB.coffee", "fileC.coffee"]]
 
-      it "desnormalized relative file path", ->
+      it "normalized relative file path", ->
         #given
         files = [["src/model/mode1", "../repo/repo1"], ["src/view/view1", "../model/model1"]]
 
@@ -24,7 +24,18 @@ describe "rehab", ->
         sorted = rehab.normalizeFilename '.', files
 
         #then
-        sorted.should.eql files = [["src/model/mode1.coffee", "src/repo/repo1.coffee"], ["src/view/view1.coffee", "src/model/model1.coffee"]]
+        sorted.should.eql [["src/model/mode1.coffee", "src/repo/repo1.coffee"], ["src/view/view1.coffee", "src/model/model1.coffee"]]
+
+      it "normalized relative file path", ->
+        #given
+        files = [["src/model/mode1", "../repo/repo1"], ["src/view/view1", "../model/model1"]]
+
+        #when
+        rehab = new Rehab()
+        sorted = rehab.normalizeFilename './project/', files
+
+        #then
+        sorted.should.eql [["project/src/model/mode1.coffee", "project/src/repo/repo1.coffee"], ["project/src/view/view1.coffee", "project/src/model/model1.coffee"]]
 
   describe "processDependencyList", ->
     describe "should return a ordered list when", ->

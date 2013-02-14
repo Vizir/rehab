@@ -7,9 +7,9 @@ build = ->
 
   rehab = new Rehab()
   files = rehab.process './src'
-
+  files = files.join " "
   console.log "FILES:", files
-  exec "coffee #{join_to_single_file} --compile --output lib/", (err, stdout, stderr) ->
+  exec "coffee #{join_to_single_file} --compile #{files}", (err, stdout, stderr) ->
     throw err if err
 
 task 'build', 'Build coffee2js using Rehab', sbuild = ->

@@ -1,3 +1,3 @@
 #_require ../model/model1.coffee
 
-class View1
+class app.View1

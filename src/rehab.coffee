@@ -15,12 +15,12 @@ module.exports = class Rehab
 
   process: (folder) ->
     # create a graph from a folder name: 
-    # C <- A -> B.coffee -> C
+    # src/C <- A -> B.coffee -> C
     depGraph = @processDependencyGraph(folder)
     console.log "1: processDependencyGraph", depGraph
 
     # normalize filenames: 
-    # C.coffee <- A.coffee -> B.coffee -> C.coffee
+    # src/C.coffee <- src/A.coffee -> src/B.coffee -> src/C.coffee
     depGraph = @normalizeFilename(folder, depGraph)
     console.log "2: normalizeFilename", depGraph
 
@@ -28,7 +28,8 @@ module.exports = class Rehab
     # A.coffee -> B.coffee -> C.coffee
     depList = @processDependencyList depGraph
     console.log "3: processDependencyList", depList
-    depList
+
+    depList.reverse() #yeah!
 
   processDependencyGraph: (folder) ->
     depGraph = []
@@ -37,15 +38,11 @@ module.exports = class Rehab
     depGraph
   
   normalizeFilename: (folder, depGraph) ->
-    # [[./fileA, fileB]] => [[fileA, fileB]]
     for edge in depGraph
-      file = edge[1]
-      continue if file == @REQ_MAIN_NODE
+      continue if edge[1] == @REQ_MAIN_NODE
 
       fileDep = @normalizeCoffeeFilename(edge[0])
-      fileDep = path.normalize fileDep
-
-      file = @normalizeCoffeeFilename(file)
+      file = @normalizeCoffeeFilename(edge[1])
       
       fullPath = path.resolve path.dirname(fileDep), file
       file = path.join(folder, path.relative(folder, fullPath))
@@ -54,8 +51,8 @@ module.exports = class Rehab
 
   normalizeCoffeeFilename: (file) ->
     file = "#{file}.coffee" unless file.endsWith ".coffee"
+    file = path.normalize file
     file
-
 
   processDependencyList: (depGraph) ->
     depList = tsort(depGraph)
