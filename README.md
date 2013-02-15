@@ -25,7 +25,7 @@ class app.Model2
 
 ```
 
-With that on your troublesome files and you are ready to use Rehab, for instance, with your Cakefile:
+With that on your troublesome files and Rehab will give you a list of files in the right order so you can use it, for instance, with your Cakefile:
 
 ```coffeescript
 {exec} = require 'child_process'
