@@ -18,10 +18,14 @@ Yes, we know... That's why we are here.
 Rehab deals with coffeescript dependency using a simple tag ```#_require [filename]``` on the file that have dependencies.
 
 ```coffeescript
-#_require ../filename.coffee
+#_require ../filenameA.coffee
+#_require ../filenameB.coffee
+
+class app.Model2
+
 ```
 
-With that on your troublesome files and you can use Rehab, for instance, with your Cakefile:
+With that on your troublesome files and you are ready to use Rehab, for instance, with your Cakefile:
 
 ```coffeescript
 {exec} = require 'child_process'
@@ -38,8 +42,6 @@ task 'build', 'Build coffee2js using Rehab', sbuild = ->
   exec "coffee #{to_single_file} #{from_files}", (err, stdout, stderr) ->
     throw err if err
 ```
-
-
 
 ## License
 
