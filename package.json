@@ -1,7 +1,7 @@
 {
   "name": "rehab",
   "version": "0.0.1",
-  "description": "Rehab",
+  "description": "Rehab helps you deal with your coffee dependency",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers coffee:coffee-script -R spec --require should test/*"
