@@ -23,7 +23,7 @@ module.exports = class Rehab
     depGraph = @normalizeFilename(folder, depGraph)
     #console.log "2: normalizeFilename", depGraph
 
-    # create a graph from a folder name: 
+    # create a list from a graph: 
     # A.coffee -> B.coffee -> C.coffee
     depList = @processDependencyList depGraph
     #console.log "3: processDependencyList", depList
