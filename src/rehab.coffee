@@ -17,17 +17,17 @@ module.exports = class Rehab
     # create a graph from a folder name: 
     # src/C <- A -> B.coffee -> C
     depGraph = @processDependencyGraph(folder)
-    console.log "1: processDependencyGraph", depGraph
+    #console.log "1: processDependencyGraph", depGraph
 
     # normalize filenames: 
     # src/C.coffee <- src/A.coffee -> src/B.coffee -> src/C.coffee
     depGraph = @normalizeFilename(folder, depGraph)
-    console.log "2: normalizeFilename", depGraph
+    #console.log "2: normalizeFilename", depGraph
 
     # create a graph from a folder name: 
     # A.coffee -> B.coffee -> C.coffee
     depList = @processDependencyList depGraph
-    console.log "3: processDependencyList", depList
+    #console.log "3: processDependencyList", depList
 
     depList.reverse() #yeah!
 

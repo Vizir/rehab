@@ -6,7 +6,10 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers coffee:coffee-script -R spec --require should test/*"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Vizir/rehab.git"
+  },
   "author": "David Lojudice Sobrinho",
   "license": "BSD",
   "dependencies": {
