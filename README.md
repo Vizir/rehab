@@ -8,7 +8,7 @@ If you need to work with multiples CoffeeScript files and need to join then into
 
 You won't immediately realize you have a problem. Just a few .coffee files here and there and all you need is ```coffee --join``` to make it work.
 
-Then, one day, you realize you need more! You need your files to have order or it won't work properly. And that little friend transpiler won't help. You start making maneuvers, like huge Cakefiles, file lists(!) or even put your files in alphabetic order (!!!). But one day you stop and think "There should be a better way to do that! I need help!"
+Then, one day, you realize you need more! You need your files to have order or it won't work properly. And that little friend transpiler [won't help](https://github.com/jashkenas/coffee-script/issues/2673#issuecomment-12372037). You start making maneuvers, like huge Cakefiles, file lists(!) or even put your files in alphabetic order (!!!). But one day you stop and think "There should be a better way to do that! I need help!"
 
 Yes, we know... That's why we are here.
 
