@@ -2,7 +2,6 @@
 
 wrench = require('wrench')
 fs = require('fs')
-tsort = require('./tsort')
 path = require('path')
 
 module.exports = class Rehab

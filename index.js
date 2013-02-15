@@ -1,1 +1,1 @@
-module.exports = require('lib/rehab')
+module.exports = require('./lib/index')
