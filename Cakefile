@@ -1,5 +1,5 @@
 {exec, spawn} = require 'child_process'
-Rehab = require './lib/index'
+Rehab = require './lib/rehab'
 
 build = ->
   console.log "Building project from src/*.coffee to lib/rehab.js"

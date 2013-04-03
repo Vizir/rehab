@@ -1,5 +1,6 @@
 #_require ./tsort
 
+
 wrench = require('wrench')
 fs = require('fs')
 path = require('path')
@@ -71,4 +72,6 @@ module.exports = class Rehab
     content = fs.readFileSync(fileName, 'utf8')
     lines = content.split '\n'
     for line in lines
+      line = line.slice(0, -1) if line.slice(-1) == '\r'
+      line = line.trim()
       depGraph.push [fileName, @parseRequiredLine(line)] if line.beginsWith @REQ_TOKEN
